@@ -29,22 +29,27 @@ class JSPhotoViewController: UIViewController {
         return collectionView
     }()
     fileprivate lazy var albums: [JSAlbumModel] = { () -> [JSAlbumModel] in
+        var fetchs = [PHFetchResult<PHAssetCollection>]()
         let fetchOptions = PHFetchOptions()
         // 所有照片
-        let allPhotoResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: fetchOptions)
+        fetchs.append(PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: fetchOptions))
         // 自拍
-        let selfResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: fetchOptions)
+        if #available(iOS 9.0, *) {
+            fetchs.append(PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: fetchOptions))
+        }
         // 连拍
-        let burstResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumBursts, options: fetchOptions)
+        fetchs.append(PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumBursts, options: fetchOptions))
         // 截屏
-        let screenshotResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumScreenshots, options: fetchOptions)
+        if #available(iOS 9.0, *) {
+            fetchs.append(PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumScreenshots, options: fetchOptions))
+        }
         // 视频
-        let videoResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumVideos, options: fetchOptions)
+        fetchs.append(PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumVideos, options: fetchOptions))
         // 其他相册
-        let albumResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+        fetchs.append(PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions))
         
         var all = [JSAlbumModel]()
-        for fetch in [allPhotoResult, selfResult, burstResult, screenshotResult, videoResult, albumResult] {
+        for fetch in fetchs {
             for i in 0 ..< fetch.count {
                 let model = JSAlbumModel(album: fetch[i])
                 if model.count > 0 {
@@ -60,10 +65,10 @@ class JSPhotoViewController: UIViewController {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
         print("\(self.classForCoder.description())销毁")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(collectionView)
         PHPhotoLibrary.shared().register(self)
         
@@ -109,8 +114,8 @@ class JSPhotoViewController: UIViewController {
                 self.selectAlbum = index
                 self.hideAlbum()
                 self.reloadDataSource(index: index)
-            }, close: { 
-                self.hideAlbum()
+                }, close: {
+                    self.hideAlbum()
             })
             view.addSubview(albumView!)
             
@@ -214,7 +219,7 @@ extension JSPhotoViewController {
 extension JSPhotoViewController: PHPhotoLibraryChangeObserver {
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        DispatchQueue.main.async { 
+        DispatchQueue.main.async {
             let albumModel = self.albums[self.selectAlbum]
             if let photosChanges = changeInstance.changeDetails(for: albumModel.photos) {
                 self.albums[self.selectAlbum].photos = photosChanges.fetchResultAfterChanges
