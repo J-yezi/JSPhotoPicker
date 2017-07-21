@@ -13,13 +13,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     @IBAction func click(_ sender: Any) {
-        presentImagePickerController(picker: JSPhotoPickerController())
+        let control = JSPhotoPickerController()
+        control.show()
     }
 
 
 }
-

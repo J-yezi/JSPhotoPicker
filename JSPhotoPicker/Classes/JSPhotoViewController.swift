@@ -14,16 +14,14 @@ class JSPhotoViewController: UIViewController {
     fileprivate let identifier = "JSPhotoCellIdentifier"
     fileprivate var photos: PHFetchResult<PHAsset>!
     fileprivate var imageCacheWidth: CGFloat = 0
-    fileprivate var middleView: UIButton!
+    fileprivate lazy var middleView: UIButton = {
+        let middleView = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 32))
+        middleView.setTitleColor(UIColor.black, for: .normal)
+        middleView.addTarget(self, action: #selector(chooseAlbum), for: .touchUpInside)
+        return middleView
+    }()
     fileprivate var albumView: JSAlbumView?
     fileprivate var selectAlbum = 0
-    fileprivate lazy var offset: CGFloat = {
-        if self.navigationController!.navigationBar.isTranslucent {
-            return 64
-        }else {
-            return 0
-        }
-    }()
     var selectRect = CGRect.zero
     var selectImage: UIImage!
     fileprivate lazy var collectionView: UICollectionView = {
@@ -70,22 +68,14 @@ class JSPhotoViewController: UIViewController {
     
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
-        print("\(self.classForCoder.description())销毁")
+        print("\(self.classForCoder.description()) - deinit")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        uiSet()
         
-        view.addSubview(collectionView)
         PHPhotoLibrary.shared().register(self)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        middleView = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 32))
-        middleView.setTitleColor(UIColor.black, for: .normal)
-        middleView.addTarget(self, action: #selector(chooseAlbum), for: .touchUpInside)
-        navigationItem.titleView = middleView
-        
         if albums.count > 0 {
             reloadDataSource(index: selectAlbum)
         }
@@ -98,6 +88,7 @@ class JSPhotoViewController: UIViewController {
         }
     }
     
+    /// 载入指定相册的照片
     func reloadDataSource(index: Int) {
         guard index < albums.count else { return }
         
@@ -133,14 +124,18 @@ class JSPhotoViewController: UIViewController {
             })
             view.addSubview(albumView!)
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 7, options: [.curveEaseInOut], animations: {
-                self.albumView?.frame = CGRect(x: 0, y: self.topLayoutGuide.length, width: kScreenWidth, height: kScreenHeight - self.topLayoutGuide.length)
-            }, completion: nil)
+            showAlbum()
         }
     }
     
+    func showAlbum() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 7, options: [.curveEaseInOut], animations: {
+            self.albumView?.frame = CGRect(x: 0, y: self.topLayoutGuide.length, width: kScreenWidth, height: kScreenHeight - self.topLayoutGuide.length)
+        }, completion: nil)
+    }
+    
     func hideAlbum() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 7, options: [.curveEaseInOut], animations: {
             self.albumView?.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: kScreenHeight - self.topLayoutGuide.length)
         }, completion: { (finish) in
             self.albumView?.removeFromSuperview()
@@ -152,6 +147,15 @@ class JSPhotoViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         albumView?.frame = CGRect(x: 0, y: topLayoutGuide.length, width: kScreenWidth, height: kScreenHeight - topLayoutGuide.length)
+    }
+}
+
+extension JSPhotoViewController {
+    fileprivate func uiSet() {
+        view.addSubview(collectionView)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        navigationItem.titleView = middleView
     }
 }
 
@@ -185,11 +189,8 @@ extension JSPhotoViewController: UICollectionViewDelegate, UICollectionViewDataS
             self?.selectImage = image
         }
         
-        let control = JSPreviewController()
-        control.photos = self.photos
-        control.currentIndex = indexPath.row
         self.navigationController?.delegate = self
-        self.navigationController?.pushViewController(control, animated: true)
+        self.navigationController?.pushViewController(JSPreviewController(photos: photos, index: indexPath.row), animated: true)
     }
 }
 
@@ -239,13 +240,10 @@ extension JSPhotoViewController: PHPhotoLibraryChangeObserver {
 @available(iOS 9.0, *)
 extension JSPhotoViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView.indexPathForItem(at: CGPoint(x: location.x, y: location.y - offset)), let cell = collectionView.cellForItem(at: indexPath) else { return nil }
-        
-        let control = JSPreviewController()
-        control.photos = self.photos
-        control.currentIndex = indexPath.row
-        previewingContext.sourceRect = CGRect(origin: CGPoint(x: cell.frame.origin.x, y: cell.frame.origin.y - offset), size: cell.bounds.size)
-        return control
+        guard let indexPath = collectionView.indexPathForItem(at: view.convert(location, to: collectionView)), let cell = collectionView.cellForItem(at: indexPath) else { return nil }
+    
+        previewingContext.sourceRect = view.convert(cell.frame, from: collectionView)
+        return JSPreviewController(photos: photos, index: indexPath.row)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {

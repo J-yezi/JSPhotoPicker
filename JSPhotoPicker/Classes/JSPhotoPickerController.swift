@@ -13,14 +13,22 @@ let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 
 public class JSPhotoPickerController: UINavigationController {
-    
-    lazy var photoControl: JSPhotoViewController = {
+    private lazy var photoControl: JSPhotoViewController = {
         let photoControl = JSPhotoViewController()
         return photoControl
     }()
+    fileprivate var presentedController: UIViewController? {
+        if let control = UIApplication.shared.keyWindow?.rootViewController {
+            while control.presentedViewController != nil && control.presentedViewController?.isBeingDismissed == false {
+                return control.presentedViewController!
+            }
+            return control
+        }
+        return nil
+    }
     
     deinit {
-        print("\(self.classForCoder.description())销毁")
+        print("\(self.classForCoder.description()) - deinit")
     }
 
     override public func viewDidLoad() {
@@ -31,7 +39,9 @@ public class JSPhotoPickerController: UINavigationController {
             setViewControllers([photoControl], animated: false)
         }
     }
+}
 
+public extension JSPhotoPickerController {
     class func authorize(_ complete: @escaping (Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         
@@ -46,5 +56,11 @@ public class JSPhotoPickerController: UINavigationController {
             complete(false)
         }
     }
-
+    
+    public func show() {
+        JSPhotoPickerController.authorize { [unowned self] in
+            guard $0 == true else { return }
+            self.presentedController?.present(self, animated: true, completion: nil)
+        }
+    }
 }

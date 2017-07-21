@@ -10,21 +10,19 @@ import UIKit
 import Photos
 
 class JSAlbumView: UIView {
-    
     fileprivate let identifier = "JSAlbumViewCell"
     fileprivate let albums: [JSAlbumModel]
     fileprivate var selectBlock: ((Int) -> Void)
     fileprivate var closeBlock: (() -> Void)?
-    fileprivate var rect: CGRect!
     fileprivate lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.bounds, style: .plain)
+        let tableView: UITableView = UITableView(frame: self.bounds, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 90
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor.clear
         tableView.register(JSAlbumCell.self, forCellReuseIdentifier: self.identifier)
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return tableView
     }()
     
@@ -33,9 +31,7 @@ class JSAlbumView: UIView {
         self.selectBlock = choose
         self.closeBlock = close
         super.init(frame: frame)
-        backgroundColor = UIColor.white
-        addSubview(tableView)
-        rect = frame
+        uiSet()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,18 +39,31 @@ class JSAlbumView: UIView {
     }
 
     deinit {
-        print("JSAlbumView销毁")
+        print("\(self.classForCoder.description()) - deinit")
     }
-    
+}
+
+extension JSAlbumView {
+    fileprivate func uiSet() {
+        backgroundColor = UIColor.white
+        addSubview(tableView)
+    }
 }
 
 extension JSAlbumView: UITableViewDelegate, UITableViewDataSource {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < -70 {
-            closeBlock?()
-        }
-        
+//        if scrollView.contentOffset.y < -70 {
+//            closeBlock?()
+//        }
+//        print(scrollView.contentOffset.y)
+//        if scrollView.contentOffset.y <= 0 && scrollView.isDragging {
+//            print("------------------\(scrollView.isDragging)")
+//            transform = CGAffineTransform(translationX: 0, y: -scrollView.contentOffset.y)
+//            tableView.transform = CGAffineTransform(translationX: 0, y: scrollView.contentOffset.y)
+//        }else {
+//            transform = CGAffineTransform.identity
+//            tableView.transform = CGAffineTransform.identity
+//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,5 +89,4 @@ extension JSAlbumView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectBlock(indexPath.row)
     }
-    
 }
