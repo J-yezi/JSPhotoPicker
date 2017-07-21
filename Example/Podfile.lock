@@ -1,0 +1,16 @@
+PODS:
+  - JSPhotoPicker (0.0.1)
+
+DEPENDENCIES:
+  - JSPhotoPicker (from `../`)
+
+EXTERNAL SOURCES:
+  JSPhotoPicker:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JSPhotoPicker: 780ae501c8a8f23ced85ec9cb7f1eb6ab260f852
+
+PODFILE CHECKSUM: 8e1001cabf8f9a5d03c33df8110fcf701af4cc80
+
+COCOAPODS: 1.3.0.beta.2

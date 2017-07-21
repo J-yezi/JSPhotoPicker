@@ -1,0 +1,6 @@
+framework module JSPhotoPicker {
+  umbrella header "JSPhotoPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
