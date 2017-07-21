@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
 
-    func presentImagePickerController(picker: JSPhotoPickerController) {
+    public func presentImagePickerController(picker: JSPhotoPickerController) {
         JSPhotoPickerController.authorize { authorized in
             guard authorized == true else { return }
             self.present(picker, animated: true, completion: nil)

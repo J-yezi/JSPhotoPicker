@@ -12,7 +12,7 @@ import Photos
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 
-class JSPhotoPickerController: UINavigationController {
+public class JSPhotoPickerController: UINavigationController {
     
     lazy var photoControl: JSPhotoViewController = {
         let photoControl = JSPhotoViewController()
@@ -23,7 +23,7 @@ class JSPhotoPickerController: UINavigationController {
         print("\(self.classForCoder.description())销毁")
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         

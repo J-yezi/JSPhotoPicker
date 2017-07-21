@@ -17,6 +17,13 @@ class JSPhotoViewController: UIViewController {
     fileprivate var middleView: UIButton!
     fileprivate var albumView: JSAlbumView?
     fileprivate var selectAlbum = 0
+    fileprivate lazy var offset: CGFloat = {
+        if self.navigationController!.navigationBar.isTranslucent {
+            return 64
+        }else {
+            return 0
+        }
+    }()
     var selectRect = CGRect.zero
     var selectImage: UIImage!
     fileprivate lazy var collectionView: UICollectionView = {
@@ -82,6 +89,13 @@ class JSPhotoViewController: UIViewController {
         if albums.count > 0 {
             reloadDataSource(index: selectAlbum)
         }
+        
+        /// 注册3DTouch
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: view)
+            }
+        }
     }
     
     func reloadDataSource(index: Int) {
@@ -142,7 +156,6 @@ class JSPhotoViewController: UIViewController {
 }
 
 extension JSPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -178,11 +191,9 @@ extension JSPhotoViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.navigationController?.delegate = self
         self.navigationController?.pushViewController(control, animated: true)
     }
-    
 }
 
 extension JSPhotoViewController: UINavigationControllerDelegate {
-    
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if  operation == .push {
             return JSPreviewPushAnimator()
@@ -190,11 +201,9 @@ extension JSPhotoViewController: UINavigationControllerDelegate {
             return nil
         }
     }
-    
 }
 
 extension JSPhotoViewController {
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -213,11 +222,9 @@ extension JSPhotoViewController {
             imageCacheWidth = collectionViewFlowLayout.itemSize.width
         }
     }
-    
 }
 
 extension JSPhotoViewController: PHPhotoLibraryChangeObserver {
-    
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.main.async {
             let albumModel = self.albums[self.selectAlbum]
@@ -227,5 +234,21 @@ extension JSPhotoViewController: PHPhotoLibraryChangeObserver {
             }
         }
     }
+}
+
+@available(iOS 9.0, *)
+extension JSPhotoViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView.indexPathForItem(at: CGPoint(x: location.x, y: location.y - offset)), let cell = collectionView.cellForItem(at: indexPath) else { return nil }
+        
+        let control = JSPreviewController()
+        control.photos = self.photos
+        control.currentIndex = indexPath.row
+        previewingContext.sourceRect = CGRect(origin: CGPoint(x: cell.frame.origin.x, y: cell.frame.origin.y - offset), size: cell.bounds.size)
+        return control
+    }
     
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
 }
