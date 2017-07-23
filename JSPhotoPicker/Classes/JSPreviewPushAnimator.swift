@@ -17,14 +17,14 @@ class JSPreviewPushAnimator: MainAnimator {
         containerView.addSubview(previewControl.view)
         previewControl.view.alpha = 0
         
-        let imageView = UIImageView(frame: photoControl.selectRect)
-        imageView.image = photoControl.selectImage
+        let imageView = UIImageView(frame: photoControl.pushRect)
+        imageView.image = photoControl.pushImage
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         containerView.addSubview(imageView)
         
         UIView.animate(withDuration: 0.3, animations: {
-            imageView.frame = calculateImagePreviewRect(photoControl.selectImage.size)
+            imageView.frame = calculateImagePreviewRect(photoControl.pushImage.size)
         }) { finished in
             self.completeTransition()
         }

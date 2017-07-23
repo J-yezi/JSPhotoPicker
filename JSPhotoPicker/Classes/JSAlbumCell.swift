@@ -9,7 +9,6 @@
 import UIKit
 
 class JSAlbumCell: UITableViewCell {
-    
     lazy var albumImageView: UIImageView = {
         let albumImageView = UIImageView(frame: CGRect(x: 12, y: 8, width: 74, height: 74))
         albumImageView.contentMode = .scaleAspectFill
@@ -18,7 +17,7 @@ class JSAlbumCell: UITableViewCell {
     }()
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: CGRect(x: 100, y: 24, width: 150, height: 20))
-        titleLabel.font = UIFont(name: "PingFangSC-Medium", size: 17)
+        titleLabel.font = UIFont(name: "PingFangSC-Regular", size: 17)
         return titleLabel
     }()
     lazy var countLabel: UILabel = {
@@ -41,5 +40,8 @@ class JSAlbumCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    deinit {
+        print("\(self.classForCoder.description()) - deinit")
+    }
 }

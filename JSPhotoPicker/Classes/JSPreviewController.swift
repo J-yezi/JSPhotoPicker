@@ -52,6 +52,10 @@ class JSPreviewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("\(self.classForCoder.description()) - deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false

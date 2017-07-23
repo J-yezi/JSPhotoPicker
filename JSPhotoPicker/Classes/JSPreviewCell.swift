@@ -42,7 +42,7 @@ class JSPreviewCell: UICollectionViewCell {
     }
     
     deinit {
-        print("JSPreviewCell销毁")
+        print("\(self.classForCoder.description()) - deinit")
     }
     
     func recoverScrollZoom() {
@@ -52,10 +52,6 @@ class JSPreviewCell: UICollectionViewCell {
     func scalePhoto(_ gesture: UITapGestureRecognizer) {
         previewView.scalePhoto(gesture)
     }
-    
-    
-    
-    
     
     func hideNav() {
         singleTapBlock?()

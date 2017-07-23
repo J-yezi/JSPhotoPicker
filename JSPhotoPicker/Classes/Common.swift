@@ -8,6 +8,12 @@
 
 import UIKit
 
+let bundle: Bundle = Bundle(path: Bundle(for: JSPhotoPickerController.self).path(forResource: "JSPhotoPicker", ofType: "bundle")!)!
+
+func Image(named: String) -> UIImage? {
+    return UIImage(named: named, in: bundle, compatibleWith: nil)
+}
+
 func calculateImagePreviewRect(_ imageSize: CGSize) -> CGRect {
     let height = floor(imageSize.height / imageSize.width * kScreenWidth)
     if height > kScreenHeight {

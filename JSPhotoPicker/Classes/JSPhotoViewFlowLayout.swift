@@ -10,7 +10,7 @@ import UIKit
 
 class JSPhotoViewFlowLayout: UICollectionViewFlowLayout {
     
-    var itemsPerRow: CGFloat = 3 {
+    var itemsPerRow: CGFloat = 4 {
         didSet {
             let width = (kScreenWidth - (itemsPerRow - 1) * minimumInteritemSpacing) / itemsPerRow
             itemSize = CGSize(width: width, height: width)
@@ -19,13 +19,16 @@ class JSPhotoViewFlowLayout: UICollectionViewFlowLayout {
     
     override init() {
         super.init()
-        
-        minimumLineSpacing = 2
-        minimumInteritemSpacing = 2
+        minimumLineSpacing = 1
+        minimumInteritemSpacing = minimumLineSpacing
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("\(self.classForCoder.description()) - deinit")
     }
     
     override func prepare() {

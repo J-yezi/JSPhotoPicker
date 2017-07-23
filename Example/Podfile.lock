@@ -1,7 +1,13 @@
 PODS:
+  - BSGridCollectionViewLayout (1.2.0)
+  - BSImagePicker (2.6.0):
+    - BSGridCollectionViewLayout (~> 1.2.0)
+    - UIImageViewModeScaleAspect (= 1.5)
   - JSPhotoPicker (0.0.2)
+  - UIImageViewModeScaleAspect (1.5)
 
 DEPENDENCIES:
+  - BSImagePicker
   - JSPhotoPicker (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +15,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  JSPhotoPicker: c8ed914a3857e7641e05c54f20fa82e9bf757663
+  BSGridCollectionViewLayout: 8f12c8e1e08c47057f5a39a6828f4395f043d78f
+  BSImagePicker: 7b740d0a9f23160bcdca01f179445583bd1c09b0
+  JSPhotoPicker: ac970b8fb23dd134c7c71b9c8f3addfacd036063
+  UIImageViewModeScaleAspect: 11a790a0b9d248a13dc63e3a78991f1463b6d84e
 
-PODFILE CHECKSUM: 8e1001cabf8f9a5d03c33df8110fcf701af4cc80
+PODFILE CHECKSUM: 8b0c3882f4390501c21a2394bf736912ad8c9a70
 
 COCOAPODS: 1.3.0.beta.3

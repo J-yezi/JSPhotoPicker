@@ -12,7 +12,9 @@ s.author             = { "J-yezi" => "yehao1020@gmail.com" }
 s.platform     = :ios, "8.0"
 s.source       = { :git => "https://github.com/J-yezi/JSPhotoPicker.git", :tag => s.version }
 s.source_files  = "JSPhotoPicker/**/*.swift"
-s.resource = ["JSPhotoPicker/**/*.png"]
+s.resource_bundles = {
+    'JSPhotoPicker' => ["JSPhotoPicker/**/*.png"]
+}
 s.frameworks = "UIKit", "Foundation", "Photos"
 s.requires_arc = true
 

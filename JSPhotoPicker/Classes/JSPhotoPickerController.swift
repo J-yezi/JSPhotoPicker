@@ -13,18 +13,24 @@ let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 
 public class JSPhotoPickerController: UINavigationController {
-    private lazy var photoControl: JSPhotoViewController = {
-        let photoControl = JSPhotoViewController()
-        return photoControl
-    }()
-    fileprivate var presentedController: UIViewController? {
-        if let control = UIApplication.shared.keyWindow?.rootViewController {
-            while control.presentedViewController != nil && control.presentedViewController?.isBeingDismissed == false {
-                return control.presentedViewController!
-            }
-            return control
-        }
-        return nil
+    fileprivate var complete: (([PHAsset], JSPhotoPickerController) ->Void)?
+    fileprivate var cancel: ((JSPhotoPickerController) -> Void)?
+    fileprivate var photoControl: JSPhotoViewController!
+    
+    public init(config: JSPhotoPickerConfig = JSPhotoPickerConfig()) {
+        super.init(nibName: nil, bundle: nil)
+        photoControl = JSPhotoViewController(config: config,
+                 complete: { [weak self] assets in
+                    guard let `self` = self else { return }
+                    self.complete?(assets, self)
+                 }, cancel: { [weak self] assets in
+                    guard let `self` = self else { return }
+                    self.cancel?(self)
+                 })
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
@@ -33,7 +39,7 @@ public class JSPhotoPickerController: UINavigationController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        uiSet()
         
         if PHPhotoLibrary.authorizationStatus() == .authorized {
             setViewControllers([photoControl], animated: false)
@@ -42,6 +48,10 @@ public class JSPhotoPickerController: UINavigationController {
 }
 
 public extension JSPhotoPickerController {
+    fileprivate func uiSet() {
+        view.backgroundColor = UIColor.white
+    }
+    
     class func authorize(_ complete: @escaping (Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         
@@ -57,10 +67,23 @@ public extension JSPhotoPickerController {
         }
     }
     
-    public func show() {
+    public func display(_ complete: (([PHAsset], JSPhotoPickerController) -> Void)?, cancel: ((JSPhotoPickerController) -> Void)?) {
         JSPhotoPickerController.authorize { [unowned self] in
             guard $0 == true else { return }
-            self.presentedController?.present(self, animated: true, completion: nil)
+            self.complete = complete
+            self.cancel = cancel
+            UIApplication.shared.presentedController?.present(self, animated: true, completion: nil)
         }
+    }
+}
+
+/// 设置图片选择器不可进行旋转
+extension JSPhotoPickerController {
+    override public var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 }

@@ -10,7 +10,6 @@ import Foundation
 import Photos
 
 struct JSAlbumModel {
-    
     let album: PHAssetCollection
     let title: String?
     let count: Int
@@ -25,5 +24,4 @@ struct JSAlbumModel {
         photos = PHAsset.fetchAssets(in: album, options: options)
         count = photos.count
     }
-    
 }

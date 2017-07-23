@@ -51,7 +51,7 @@ class JSPreviewView: UIView {
     }
     
     deinit {
-        print("JSPreviewView销毁")
+        print("\(self.classForCoder.description()) - deinit")
     }
     
     func scalePhoto(_ gesture: UITapGestureRecognizer) {
