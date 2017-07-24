@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "JSPhotoPicker"
-s.version      = "0.0.4"
+s.version      = "0.0.5"
 s.summary      = "图片选择器"
 s.description  = <<-DESC
                     image picker

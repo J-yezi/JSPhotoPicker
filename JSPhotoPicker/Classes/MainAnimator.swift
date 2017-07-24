@@ -17,7 +17,9 @@ class MainAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     var defaultTime = 0.3
     
     deinit {
-        print("\(self.classForCoder.description()) - deinit")
+        if kLog {
+            print("\(self.classForCoder.description()) - deinit")
+        }
     }
     
     func animateTransitionEvent() {}

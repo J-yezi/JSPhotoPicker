@@ -55,7 +55,9 @@ class JSPreviewCropView: UIView {
     }
     
     deinit {
-        print("\(self.classForCoder.description()) - deinit")
+        if kLog {
+            print("\(self.classForCoder.description()) - deinit")
+        }
     }
 
 }

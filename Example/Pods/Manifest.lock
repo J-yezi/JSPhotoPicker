@@ -1,5 +1,5 @@
 PODS:
-  - JSPhotoPicker (0.0.3)
+  - JSPhotoPicker (0.0.4)
 
 DEPENDENCIES:
   - JSPhotoPicker (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  JSPhotoPicker: 7cc9577c1f622da34ffbdf1cbe564c4bd3e37c4a
+  JSPhotoPicker: 12f8b12439a6b949629b2511881cc674e8348a9d
 
 PODFILE CHECKSUM: 8e1001cabf8f9a5d03c33df8110fcf701af4cc80
 

@@ -32,6 +32,27 @@ class JSPhotoViewController: UIViewController {
     var pushImage: UIImage!
     /// 选择的图片集合
     fileprivate var selectAssets = Array<(IndexPath, PHAsset)>()
+    
+    fileprivate lazy var leftBtn: UIButton = {
+        let leftBtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 32))
+        leftBtn.setTitle("取消", for: .normal)
+        leftBtn.contentHorizontalAlignment = .left
+        leftBtn.adjustsImageWhenHighlighted = false
+        leftBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        leftBtn.setTitleColor(UIColor(red: 20.0 / 255.0, green: 20.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0), for: .normal)
+        leftBtn.addTarget(self, action: #selector(imageCancel), for: .touchUpInside)
+        return leftBtn
+    }()
+    fileprivate lazy var rightBtn: UIButton = {
+        let rightBtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 32))
+        rightBtn.setTitle("完成", for: .normal)
+        rightBtn.adjustsImageWhenHighlighted = false
+        rightBtn.contentHorizontalAlignment = .right
+        rightBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        rightBtn.setTitleColor(UIColor(red: 20.0 / 255.0, green: 20.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0), for: .normal)
+        rightBtn.addTarget(self, action: #selector(imageDone), for: .touchUpInside)
+        return rightBtn
+    }()
     fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: JSPhotoViewFlowLayout())
         collectionView.backgroundColor = UIColor.white
@@ -87,7 +108,9 @@ class JSPhotoViewController: UIViewController {
     
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
-        print("\(self.classForCoder.description()) - deinit")
+        if kLog {
+            print("\(self.classForCoder.description()) - deinit")
+        }
     }
     
     override func viewDidLoad() {
@@ -100,11 +123,11 @@ class JSPhotoViewController: UIViewController {
         }
         
         /// 注册3DTouch
-//        if #available(iOS 9.0, *) {
-//            if traitCollection.forceTouchCapability == .available {
-//                registerForPreviewing(with: self, sourceView: view)
-//            }
-//        }
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: view)
+            }
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -117,15 +140,12 @@ class JSPhotoViewController: UIViewController {
 extension JSPhotoViewController {
     fileprivate func uiSet() {
         view.addSubview(collectionView)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .done, target: self, action: #selector(imageCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .done, target: self, action: #selector(imageDone))
-        let attr = [NSFontAttributeName: UIFont.systemFont(ofSize: 16), NSForegroundColorAttributeName: UIColor(red: 20.0 / 255.0, green: 20.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0)]
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes(attr, for: .normal)
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes(attr, for: .highlighted)
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attr, for: .normal)
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attr, for: .highlighted)
+        
+        let itemSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        itemSpace.width = -6
+        navigationItem.leftBarButtonItems = [itemSpace, UIBarButtonItem(customView: leftBtn)]
+        navigationItem.rightBarButtonItems = [itemSpace, UIBarButtonItem(customView: rightBtn)]
         navigationItem.titleView = middleView
-        self.navigationController?.navigationBar.tintColor = UIColor.red
     }
     
     /// 载入指定相册的照片
@@ -272,7 +292,7 @@ extension JSPhotoViewController: JSPhotoCellDelegate {
         }else {
             selectAssets = selectAssets.filter { $0.0 != cell.indexPath }
         }
-        navigationItem.rightBarButtonItem?.title = "完成(\(selectAssets.count))"
+        rightBtn.setTitle("完成(\(self.selectAssets.count))", for: .normal)
     }
 }
 
@@ -294,13 +314,13 @@ extension JSPhotoViewController {
         if let collectionViewFlowLayout = collectionView.collectionViewLayout as? JSPhotoViewFlowLayout {
             switch (traitCollection.verticalSizeClass, traitCollection.horizontalSizeClass) {
             case (.compact, .regular): // iPhone5-6 portrait
-                collectionViewFlowLayout.itemsPerRow = 4
+                collectionViewFlowLayout.itemsPerRow = 3
             case (.compact, .compact): // iPhone5-6 landscape
                 collectionViewFlowLayout.itemsPerRow = 5
             case (.regular, .regular): // iPad portrait/landscape
                 collectionViewFlowLayout.itemsPerRow = 7
             default:
-                collectionViewFlowLayout.itemsPerRow = 4
+                collectionViewFlowLayout.itemsPerRow = 3
             }
             
             imageCacheWidth = collectionViewFlowLayout.itemSize.width

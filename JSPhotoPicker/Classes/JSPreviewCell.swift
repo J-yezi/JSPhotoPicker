@@ -42,7 +42,9 @@ class JSPreviewCell: UICollectionViewCell {
     }
     
     deinit {
-        print("\(self.classForCoder.description()) - deinit")
+        if kLog {
+            print("\(self.classForCoder.description()) - deinit")
+        }
     }
     
     func recoverScrollZoom() {

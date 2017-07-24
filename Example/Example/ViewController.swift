@@ -8,7 +8,6 @@
 
 import UIKit
 import JSPhotoPicker
-import BSImagePicker
 import Photos
 
 class ViewController: UIViewController {
@@ -17,6 +16,7 @@ class ViewController: UIViewController {
     var a: UIView!
     var b: Bool = false
     var delayItem: DispatchWorkItem!
+//    var control: JSPhotoPickerController!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,24 +27,11 @@ class ViewController: UIViewController {
 
     @IBAction func click(_ sender: Any) {
         
-        let control = JSPhotoPickerController(config: JSPhotoPickerConfig(maxNumber: 3))
-        control.display({ [weak self] assets, picker in
-            guard let `self` = self else { return }
-            let options = PHImageRequestOptions()
-            options.deliveryMode = .highQualityFormat
-            options.resizeMode = .fast
-            let asset = assets.first!
-            
-            
-            asset.requestImage(targetSize: .custom(size: CGSize(width: 150, height: 150)), contentMode: .aspectFit, options: options, isSynchronous: true, complete: { image in
-                self.imageView.image = image
-                print("--------\(image!.scale) - \(image!.size)")
-            })
-            print("-------aaaaaaa")
-            picker.dismiss(animated: true, completion: nil)
-        }) { picker in
-            picker.dismiss(animated: true, completion: nil)
-        }
+        let _ = JSPhotoPickerController(complete: {
+            $0.0.dismiss(animated: true, completion: nil)
+        }, cancel: {
+            $0.dismiss(animated: true, completion: nil)
+        }).display()
     }
 
 

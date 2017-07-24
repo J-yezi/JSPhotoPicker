@@ -13,7 +13,7 @@ public enum AssetSize {
     case custom(size: CGSize)
 }
 
-public extension PHAsset {
+extension PHAsset {
     public func requestImage(targetSize: AssetSize, contentMode: PHImageContentMode, options: PHImageRequestOptions?, isSynchronous: Bool = false, complete: @escaping (UIImage?) -> Void) {
         
         var o = options
@@ -34,5 +34,31 @@ public extension PHAsset {
         PHCachingImageManager.default().requestImage(for: self, targetSize: assetSize, contentMode: contentMode, options: o) { (image, _) in
             complete(image)
         }
+    }
+}
+
+extension Array where Element == PHAsset {
+    public func requestImages(targetSize: AssetSize, contentMode: PHImageContentMode, options: PHImageRequestOptions?) -> [UIImage] {
+        var o = options
+        if o == nil {
+            o = PHImageRequestOptions()
+        }
+        o?.isSynchronous = true
+        
+        var images = [UIImage]()
+        forEach {
+            var assetSize: CGSize = .zero
+            switch targetSize {
+            case .original:
+                assetSize = CGSize(width: $0.pixelWidth, height: $0.pixelHeight)
+            case .custom(let size):
+                assetSize = size
+            }
+            PHCachingImageManager.default().requestImage(for: $0, targetSize: assetSize, contentMode: contentMode, options: o) { (image, _) in
+                guard let image = image else { return }
+                images.append(image)
+            }
+        }
+        return images
     }
 }

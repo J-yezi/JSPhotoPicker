@@ -11,22 +11,29 @@ import Photos
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
+let kLog: Bool = true
 
 public class JSPhotoPickerController: UINavigationController {
-    fileprivate var complete: (([PHAsset], JSPhotoPickerController) ->Void)?
+    fileprivate var complete: ((JSPhotoPickerController, [PHAsset]) ->Void)?
     fileprivate var cancel: ((JSPhotoPickerController) -> Void)?
     fileprivate var photoControl: JSPhotoViewController!
+    /// 在用户授权相册时候，是一个异步过程，所有会出现deinit的情况，所有需要一个循环引用
+    fileprivate var strong: AnyObject?
     
-    public init(config: JSPhotoPickerConfig = JSPhotoPickerConfig()) {
+    public init(config: JSPhotoPickerConfig = JSPhotoPickerConfig(), complete: ((JSPhotoPickerController, [PHAsset]) ->Void)? = nil, cancel: ((JSPhotoPickerController) -> Void)?) {
         super.init(nibName: nil, bundle: nil)
+        self.complete = complete
+        self.cancel = cancel
         photoControl = JSPhotoViewController(config: config,
-                 complete: { [weak self] assets in
-                    guard let `self` = self else { return }
-                    self.complete?(assets, self)
-                 }, cancel: { [weak self] assets in
-                    guard let `self` = self else { return }
-                    self.cancel?(self)
-                 })
+                                             complete: { [weak self] assets in
+                                                guard let `self` = self else { return }
+                                                self.strong = nil
+                                                self.complete?(self, assets)
+            }, cancel: { [weak self] assets in
+                guard let `self` = self else { return }
+                self.strong = nil
+                self.cancel?(self)
+        })
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -34,9 +41,11 @@ public class JSPhotoPickerController: UINavigationController {
     }
     
     deinit {
-        print("\(self.classForCoder.description()) - deinit")
+        if kLog {
+            print("\(self.classForCoder.description()) - deinit")
+        }
     }
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         uiSet()
@@ -47,12 +56,12 @@ public class JSPhotoPickerController: UINavigationController {
     }
 }
 
-public extension JSPhotoPickerController {
+extension JSPhotoPickerController {
     fileprivate func uiSet() {
         view.backgroundColor = UIColor.white
     }
     
-    class func authorize(_ complete: @escaping (Bool) -> Void) {
+    class public func authorize(_ complete: @escaping (Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch status {
@@ -67,12 +76,13 @@ public extension JSPhotoPickerController {
         }
     }
     
-    public func display(_ complete: (([PHAsset], JSPhotoPickerController) -> Void)?, cancel: ((JSPhotoPickerController) -> Void)?) {
-        JSPhotoPickerController.authorize { [unowned self] in
-            guard $0 == true else { return }
-            self.complete = complete
-            self.cancel = cancel
-            UIApplication.shared.presentedController?.present(self, animated: true, completion: nil)
+    public func display() {
+        strong = self
+        JSPhotoPickerController.authorize { [weak self] in
+            guard $0 == true, let `self` = self else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.presentedController?.present(self, animated: true, completion: nil)
+            }
         }
     }
 }
