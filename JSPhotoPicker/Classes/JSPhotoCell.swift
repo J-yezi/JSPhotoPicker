@@ -16,11 +16,13 @@ protocol JSPhotoCellDelegate: class {
 class JSPhotoCell: UICollectionViewCell {
     weak var delegate: JSPhotoCellDelegate?
     var indexPath: IndexPath!
+    var choosedImage: UIImage! /// 选择后的图片
     var choosed: Bool = false {
         didSet {
             chooseView.isSelected = choosed
             shadeView.isHidden = !choosed
-            chooseView.setImage(choosed ? Image(named: "image-choose") : Image(named: "image-unchoose"), for: .normal)
+            
+            chooseView.setImage(choosed ? choosedImage : Image(named: "image_unchoose"), for: .normal)
         }
     }
     lazy var imageView: UIImageView = {
@@ -31,7 +33,7 @@ class JSPhotoCell: UICollectionViewCell {
     }()
     fileprivate lazy var chooseView: UIButton = {
         let chooseView: UIButton = UIButton(frame: CGRect(x: self.bounds.width - 35, y: 0, width: 35, height: 35))
-        chooseView.setImage(Image(named: "image-unchoose"), for: .normal)
+        chooseView.setImage(Image(named: "image_unchoose"), for: .normal)
         chooseView.addTarget(self, action: #selector(self.choose), for: .touchUpInside)
         return chooseView
     }()

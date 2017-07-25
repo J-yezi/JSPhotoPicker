@@ -10,6 +10,9 @@ import UIKit
 import Photos
 
 class JSPhotoViewController: UIViewController {
+    fileprivate var choosedImage: UIImage!
+    fileprivate var arrowUpImage: UIImage!
+    fileprivate var arrowDownImage: UIImage!
     fileprivate var complete: (([PHAsset]) ->Void)?
     fileprivate var cancel: (() -> Void)?
     fileprivate var config: JSPhotoPickerConfig!
@@ -20,7 +23,7 @@ class JSPhotoViewController: UIViewController {
     fileprivate lazy var middleView: JSTitleButton = {
         let middleView = JSTitleButton(frame: CGRect(x: 0, y: 0, width: 150, height: 32))
         middleView.setTitleColor(UIColor.black, for: .normal)
-        middleView.setImage(Image(named: "arrow-down"), for: .normal)
+        middleView.setImage(self.arrowDownImage, for: .normal)
         middleView.addTarget(self, action: #selector(chooseAlbum), for: .touchUpInside)
         return middleView
     }()
@@ -100,6 +103,11 @@ class JSPhotoViewController: UIViewController {
         self.config = config
         self.complete = complete
         self.cancel = cancel
+        
+        /// 因为图片需要渲染或者叠加操作，所以直接就统一在这里一次生成好
+        choosedImage = Image(named: "image_choose_confirm")!.combine(Image(named: "image_choose_bg")!.tint(config.selectColor)!)
+        arrowUpImage = Image(named: "arrow_up")?.tint(config.selectColor)
+        arrowDownImage = Image(named: "arrow_down")?.tint(config.selectColor)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -123,11 +131,11 @@ class JSPhotoViewController: UIViewController {
         }
         
         /// 注册3DTouch
-        if #available(iOS 9.0, *) {
-            if traitCollection.forceTouchCapability == .available {
-                registerForPreviewing(with: self, sourceView: view)
-            }
-        }
+//        if #available(iOS 9.0, *) {
+//            if traitCollection.forceTouchCapability == .available {
+//                registerForPreviewing(with: self, sourceView: view)
+//            }
+//        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -189,14 +197,14 @@ extension JSPhotoViewController {
     }
     
     fileprivate func showAlbum() {
-        middleView.setImage(Image(named: "arrow-up"), for: .normal)
+        middleView.setImage(arrowUpImage, for: .normal)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 7, options: [.curveEaseInOut], animations: {
             self.albumView?.frame = CGRect(x: 0, y: self.topLayoutGuide.length, width: kScreenWidth, height: kScreenHeight - self.topLayoutGuide.length)
         }, completion: nil)
     }
     
     fileprivate func hideAlbum() {
-        middleView.setImage(Image(named: "arrow-down"), for: .normal)
+        middleView.setImage(arrowDownImage, for: .normal)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 7, options: [.curveEaseInOut], animations: {
             self.albumView?.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: kScreenHeight - self.topLayoutGuide.length)
         }, completion: { (finish) in
@@ -251,6 +259,7 @@ extension JSPhotoViewController: UICollectionViewDelegate, UICollectionViewDataS
         selectAssets.forEach {
             cell.choosed = cell.indexPath == $0.0
         }
+        cell.choosedImage = choosedImage
         cell.delegate = self
         cell.tag = Int(JSImageManager.getPhoto(asset: photos[indexPath.row], width: imageCacheWidth, complete: { (image, _) in
             cell.imageView.image = image
@@ -292,7 +301,7 @@ extension JSPhotoViewController: JSPhotoCellDelegate {
         }else {
             selectAssets = selectAssets.filter { $0.0 != cell.indexPath }
         }
-        rightBtn.setTitle("完成(\(self.selectAssets.count))", for: .normal)
+        rightBtn.setTitle(selectAssets.count > 0 ? "完成(\(self.selectAssets.count))" : "完成", for: .normal)
     }
 }
 

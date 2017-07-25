@@ -7,39 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		170A6EF027261CBC76C33A98F4097F8A /* MainAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9752BE67C5EE1AF49153DA88C63C958 /* MainAnimator.swift */; };
-		1C745FDF99ABBB899BE54AF9182BA242 /* JSPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD604819776F31C8CBF3E57A012B53 /* JSPhotoCell.swift */; };
+		14BE8FD18F1F991B29DADC58EFC85E82 /* image_choose_confirm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA62668AF23A217B24C01E54D83F3812 /* image_choose_confirm@3x.png */; };
+		170A6EF027261CBC76C33A98F4097F8A /* MainAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF897D4C00AFA700463C041AB9E853 /* MainAnimator.swift */; };
+		1C745FDF99ABBB899BE54AF9182BA242 /* JSPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6DD100B767850141365D1B247D23E6 /* JSPhotoCell.swift */; };
 		27100C16C5E2829C4552255AD3A065B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A1087A37D5FE3535EBFB6C0D5334B /* UIKit.framework */; };
-		39B40BD23C84BC3B3B75E0FDE69C593D /* PHAssetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102A60B054CC40E52B415D282420BD8F /* PHAssetExtension.swift */; };
-		3CDAF7C852076AC98AC82847A80CDCD2 /* JSPhotoViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB0D92028EE670AC953C47ACDB2A79 /* JSPhotoViewFlowLayout.swift */; };
-		40EE3F0077ECC8E91C0234DCFCEEB832 /* JSImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB26DCBD4D8E03CA684AACA3CF4DFA /* JSImageManager.swift */; };
-		436CDE3F5755D5CE5C54E9BD41B94830 /* JSPhotoPickerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB5C53965946A9477AD3F5689F6F1A1 /* JSPhotoPickerConfig.swift */; };
-		4B428BB95C72A9111BC435C736D26A40 /* JSPreviewPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1DEE13FCA61931E1E11CFA419EE674 /* JSPreviewPopAnimator.swift */; };
-		50F226DFEE5234B63291D3910077B4C2 /* JSPreviewPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDAC5EEC8761C0C1896420BEC3699D /* JSPreviewPushAnimator.swift */; };
-		57C2ED244735B9FC357B313312F8EA86 /* image-choose@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693B3C53CB40B55D33198098D26CC02C /* image-choose@3x.png */; };
+		39B40BD23C84BC3B3B75E0FDE69C593D /* JSPhotoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489015FAF9D4D57E07E9FEC31E7D27E /* JSPhotoExtensions.swift */; };
+		3CDAF7C852076AC98AC82847A80CDCD2 /* JSPhotoViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98534EA1FA6ABE85A2415466F0250466 /* JSPhotoViewFlowLayout.swift */; };
+		40EE3F0077ECC8E91C0234DCFCEEB832 /* JSImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED1FA012FBA37A9B96D47C669FA89E /* JSImageManager.swift */; };
+		436CDE3F5755D5CE5C54E9BD41B94830 /* JSPhotoPickerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDD2F5AF434B20D7EDF089C1C5CC0C /* JSPhotoPickerConfig.swift */; };
+		448A261F4D82D1FB86C2BA184C25A5EC /* image_choose_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77278CAC2077900382A210044B394DB8 /* image_choose_bg@3x.png */; };
+		4B428BB95C72A9111BC435C736D26A40 /* JSPreviewPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DFFAEFEBD27C7A55492B9E31419FFB /* JSPreviewPopAnimator.swift */; };
+		50F226DFEE5234B63291D3910077B4C2 /* JSPreviewPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790A427090B5043E2BDB4BD97B731A6 /* JSPreviewPushAnimator.swift */; };
 		595BF6A1DD2158B377D55BC714E64BA4 /* Pods-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BDE82371C83FA9AE91B05F77ACAA36 /* Pods-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C073FA3050C2F0667F90A51626F701F /* JSPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBC8561CBDC61C5EE2E7305E52294F /* JSPreviewController.swift */; };
-		7B7CCCB73D58692D93D3E0CAB8FB0412 /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C05D6F1D3C40EC7F9CE0E7C137B06B /* arrow-down@2x.png */; };
-		86E6B67F6ADAA11FB59DCB57A780DBFE /* JSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D57B83066E0729D8E6ACCE4FE2685 /* JSAlbumView.swift */; };
-		891537DDC01F799AC4484B989D64A907 /* JSPhotoPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3154AFCBB601CD96A3ED3B6ACD929B76 /* JSPhotoPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		946FBCF2FAC05D12240E53170D9786EC /* image-unchoose@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63006DD36CC152E39B7553AA6A94EBA7 /* image-unchoose@3x.png */; };
+		5A6A17DCA259EFD9F4B9EF03001ED1EB /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D1D46565A0EE1A99B8B415F88A0F9A /* arrow_down@3x.png */; };
+		6C073FA3050C2F0667F90A51626F701F /* JSPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E16C9DF67268AA9D528B8AFE7C1AA5F /* JSPreviewController.swift */; };
+		86E6B67F6ADAA11FB59DCB57A780DBFE /* JSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF1B215E818C6ECC408F1CB0D28FD9 /* JSAlbumView.swift */; };
+		891537DDC01F799AC4484B989D64A907 /* JSPhotoPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA143742DFCAB5DA6DD15B007F3C354 /* JSPhotoPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96806D85C534DD511B3C5E62F20A28FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AF6E9E67D620E639E17F9B0A8B56EF /* Foundation.framework */; };
-		AD7ED89C67F08C70D28AE936EDE203D6 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403183CC520F921E36C69AFF38FA1B7B /* Common.swift */; };
-		BC1E5FE45EF13C3D8F787D8102F2FEB3 /* JSAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9A6BD161C43CFCED66A5D53D035B3 /* JSAlbumModel.swift */; };
-		BC9CAE080C6BCCC116B262EDCC1C8212 /* JSPhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83BE7299C2FCCC51C5ED9480E621AD /* JSPhotoPickerController.swift */; };
+		AD7ED89C67F08C70D28AE936EDE203D6 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF77F79E355D9B6C19CBBBDCE3E4B9 /* Common.swift */; };
+		BC1E5FE45EF13C3D8F787D8102F2FEB3 /* JSAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52EA5130D0C08B47C89D7B1E3C2DEA /* JSAlbumModel.swift */; };
+		BC9CAE080C6BCCC116B262EDCC1C8212 /* JSPhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F945D3AD13F6A95F492D5EBA3EDFC3 /* JSPhotoPickerController.swift */; };
 		C0772BB72614685A24586D1F60990E1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AF6E9E67D620E639E17F9B0A8B56EF /* Foundation.framework */; };
 		C0CA6A6CC7B5945CBB756B44507E4D60 /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 699118D7DDD5F335E4FB8B17DC0F12D2 /* Pods-Example-dummy.m */; };
-		D03D75322B9722E020AB27F0DC2C390E /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7DDD9275C96E7C398A54322216075C1 /* arrow-up@2x.png */; };
-		D07A9BA294F76FB74311E1C32AF5F1DC /* JSPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E125BA70E937C9EC35A391CA185730B /* JSPhotoViewController.swift */; };
-		D9C253EF07693F2B594B91D9EFED0BA6 /* JSPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6EC8F6491A5250EC72F9E9CD7E5D05 /* JSPreviewView.swift */; };
+		C3B3F83266FE60211B1E61C37B779F26 /* image_unchoose@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4829E694F4E020C4812F86F900EC9C02 /* image_unchoose@3x.png */; };
+		D07A9BA294F76FB74311E1C32AF5F1DC /* JSPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E48336B1DDA3E4759EC74029CB005FB /* JSPhotoViewController.swift */; };
+		D9C253EF07693F2B594B91D9EFED0BA6 /* JSPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3230BA678561A14AB0518BF3D9E3042D /* JSPreviewView.swift */; };
 		DAC238BC3BBFD5C02B60DE5C6C6D5325 /* JSPhotoPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90FE3BA0CA578D96A620CC2C557E601C /* JSPhotoPicker.bundle */; };
-		DF714096165405EBCB1A4108372D7E98 /* JSTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9CD8A4E8CE79112FDCDDA8C7581B3 /* JSTitleButton.swift */; };
-		E6FF53A2D9FD9BA3B57D14C36F06819E /* JSPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4DE42302F1FB2DD4FA34B167E2D81 /* JSPreviewCell.swift */; };
-		ECA407B0D75007E70665EFB901DF098C /* JSPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0228339ED739ADE3AFF13A47275FA303 /* JSPhotoPicker-dummy.m */; };
-		F225E47E6022C03EAB9801C99BCAB0F5 /* JSPreviewCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B6DC4DE26E43A9CE9396D8DA739DF6 /* JSPreviewCropView.swift */; };
+		DF714096165405EBCB1A4108372D7E98 /* JSTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F292E39A3612A0CAAFD2B49BB649 /* JSTitleButton.swift */; };
+		E6FF53A2D9FD9BA3B57D14C36F06819E /* JSPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72778FB80721051BFDA113D72E15BAB8 /* JSPreviewCell.swift */; };
+		ECA407B0D75007E70665EFB901DF098C /* JSPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A719BE774DFE07AD59A5A6B0E20C5A9 /* JSPhotoPicker-dummy.m */; };
+		EE880C2C8527FBB295605AB62BBEC30F /* arrow_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFB9DE96D97B55BD5B34BAE1DF64B66 /* arrow_up@3x.png */; };
+		F225E47E6022C03EAB9801C99BCAB0F5 /* JSPreviewCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA1642C5A6D0A44AE0779FA5F292E3 /* JSPreviewCropView.swift */; };
+		FAF80516EC10E5A35835CE4DBB4F954E /* image_choose@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F71D9A1895F145FEE469E54B0256B5 /* image_choose@3x.png */; };
 		FC138F75DD78929792C2BA807FB8D593 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26A7C6C07A9AA6DA68F130C37E06956 /* Photos.framework */; };
-		FC8D3C9830D9DB17F8DCF3EF88B24D50 /* JSAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19C7A352375EDDEA597EE5645B5FE9 /* JSAlbumCell.swift */; };
-		FDAFB1605E2354A2505727EFE57E7FB1 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957ACB9D171EE74A43BCEF1C64147B5 /* UIApplicationExtension.swift */; };
+		FC8D3C9830D9DB17F8DCF3EF88B24D50 /* JSAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115837B5FFD565E9CAFBCF05C56E057C /* JSAlbumCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,53 +62,54 @@
 
 /* Begin PBXFileReference section */
 		01E6907CF2644EB1CF8E23F708A3DA0B /* Pods-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-resources.sh"; sourceTree = "<group>"; };
-		0228339ED739ADE3AFF13A47275FA303 /* JSPhotoPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JSPhotoPicker-dummy.m"; sourceTree = "<group>"; };
-		0957ACB9D171EE74A43BCEF1C64147B5 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIApplicationExtension.swift; path = JSPhotoPicker/Classes/UIApplicationExtension.swift; sourceTree = "<group>"; };
-		102A60B054CC40E52B415D282420BD8F /* PHAssetExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PHAssetExtension.swift; path = JSPhotoPicker/Classes/PHAssetExtension.swift; sourceTree = "<group>"; };
-		119072C64A19799964E1620D83F514FB /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
-		12DB26DCBD4D8E03CA684AACA3CF4DFA /* JSImageManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSImageManager.swift; path = JSPhotoPicker/Classes/JSImageManager.swift; sourceTree = "<group>"; };
+		0489015FAF9D4D57E07E9FEC31E7D27E /* JSPhotoExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoExtensions.swift; path = JSPhotoPicker/Classes/JSPhotoExtensions.swift; sourceTree = "<group>"; };
+		05BA1642C5A6D0A44AE0779FA5F292E3 /* JSPreviewCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewCropView.swift; path = JSPhotoPicker/Classes/JSPreviewCropView.swift; sourceTree = "<group>"; };
+		115837B5FFD565E9CAFBCF05C56E057C /* JSAlbumCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumCell.swift; path = JSPhotoPicker/Classes/JSAlbumCell.swift; sourceTree = "<group>"; };
+		119072C64A19799964E1620D83F514FB /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
 		149054C495E8EC590CAB4C524133016F /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		1C19C7A352375EDDEA597EE5645B5FE9 /* JSAlbumCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumCell.swift; path = JSPhotoPicker/Classes/JSAlbumCell.swift; sourceTree = "<group>"; };
-		262C7DF3189C5B9DB266E71AACC7967C /* JSPhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JSPhotoPicker.framework; path = JSPhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3154AFCBB601CD96A3ED3B6ACD929B76 /* JSPhotoPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSPhotoPicker-umbrella.h"; sourceTree = "<group>"; };
-		31A696A866B54EE95AC7BA506265ACAF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JSPhotoPicker.xcconfig; sourceTree = "<group>"; };
-		34F9A6BD161C43CFCED66A5D53D035B3 /* JSAlbumModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumModel.swift; path = JSPhotoPicker/Classes/JSAlbumModel.swift; sourceTree = "<group>"; };
-		3E1DEE13FCA61931E1E11CFA419EE674 /* JSPreviewPopAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewPopAnimator.swift; path = JSPhotoPicker/Classes/JSPreviewPopAnimator.swift; sourceTree = "<group>"; };
-		403183CC520F921E36C69AFF38FA1B7B /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = JSPhotoPicker/Classes/Common.swift; sourceTree = "<group>"; };
-		42BDAC5EEC8761C0C1896420BEC3699D /* JSPreviewPushAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewPushAnimator.swift; path = JSPhotoPicker/Classes/JSPreviewPushAnimator.swift; sourceTree = "<group>"; };
-		45B6DC4DE26E43A9CE9396D8DA739DF6 /* JSPreviewCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewCropView.swift; path = JSPhotoPicker/Classes/JSPreviewCropView.swift; sourceTree = "<group>"; };
-		4DB5C53965946A9477AD3F5689F6F1A1 /* JSPhotoPickerConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoPickerConfig.swift; path = JSPhotoPicker/Classes/JSPhotoPickerConfig.swift; sourceTree = "<group>"; };
+		16592057ECAB884F84415A0D39DEC77D /* JSPhotoPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSPhotoPicker-prefix.pch"; sourceTree = "<group>"; };
+		18DDD2F5AF434B20D7EDF089C1C5CC0C /* JSPhotoPickerConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoPickerConfig.swift; path = JSPhotoPicker/Classes/JSPhotoPickerConfig.swift; sourceTree = "<group>"; };
+		1AAF897D4C00AFA700463C041AB9E853 /* MainAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainAnimator.swift; path = JSPhotoPicker/Classes/MainAnimator.swift; sourceTree = "<group>"; };
+		1DAF77F79E355D9B6C19CBBBDCE3E4B9 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = JSPhotoPicker/Classes/Common.swift; sourceTree = "<group>"; };
+		1EEF1B215E818C6ECC408F1CB0D28FD9 /* JSAlbumView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumView.swift; path = JSPhotoPicker/Classes/JSAlbumView.swift; sourceTree = "<group>"; };
+		21F71D9A1895F145FEE469E54B0256B5 /* image_choose@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image_choose@3x.png"; path = "JSPhotoPicker/Assets/image_choose@3x.png"; sourceTree = "<group>"; };
+		262C7DF3189C5B9DB266E71AACC7967C /* JSPhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSPhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3230BA678561A14AB0518BF3D9E3042D /* JSPreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewView.swift; path = JSPhotoPicker/Classes/JSPreviewView.swift; sourceTree = "<group>"; };
+		3CB0B743569B246F6AC5EEC6E0C35B74 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44F945D3AD13F6A95F492D5EBA3EDFC3 /* JSPhotoPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoPickerController.swift; path = JSPhotoPicker/Classes/JSPhotoPickerController.swift; sourceTree = "<group>"; };
+		4829E694F4E020C4812F86F900EC9C02 /* image_unchoose@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image_unchoose@3x.png"; path = "JSPhotoPicker/Assets/image_unchoose@3x.png"; sourceTree = "<group>"; };
+		4FFB9DE96D97B55BD5B34BAE1DF64B66 /* arrow_up@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_up@3x.png"; path = "JSPhotoPicker/Assets/arrow_up@3x.png"; sourceTree = "<group>"; };
 		552550F3F912264E5D073F8893691F88 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
-		567902C80F4939D00AE834C3653A1039 /* JSPhotoPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSPhotoPicker-prefix.pch"; sourceTree = "<group>"; };
-		56B9CD8A4E8CE79112FDCDDA8C7581B3 /* JSTitleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSTitleButton.swift; path = JSPhotoPicker/Classes/JSTitleButton.swift; sourceTree = "<group>"; };
-		5ACA30DEFE5C5CE92B6142CB86DEBEC2 /* JSPhotoPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JSPhotoPicker.modulemap; sourceTree = "<group>"; };
-		5F6EC8F6491A5250EC72F9E9CD7E5D05 /* JSPreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewView.swift; path = JSPhotoPicker/Classes/JSPreviewView.swift; sourceTree = "<group>"; };
-		63006DD36CC152E39B7553AA6A94EBA7 /* image-unchoose@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image-unchoose@3x.png"; path = "JSPhotoPicker/Assets/image-unchoose@3x.png"; sourceTree = "<group>"; };
-		693B3C53CB40B55D33198098D26CC02C /* image-choose@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image-choose@3x.png"; path = "JSPhotoPicker/Assets/image-choose@3x.png"; sourceTree = "<group>"; };
+		5790A427090B5043E2BDB4BD97B731A6 /* JSPreviewPushAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewPushAnimator.swift; path = JSPhotoPicker/Classes/JSPreviewPushAnimator.swift; sourceTree = "<group>"; };
+		5E16C9DF67268AA9D528B8AFE7C1AA5F /* JSPreviewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewController.swift; path = JSPhotoPicker/Classes/JSPreviewController.swift; sourceTree = "<group>"; };
 		699118D7DDD5F335E4FB8B17DC0F12D2 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
-		73CBC8561CBDC61C5EE2E7305E52294F /* JSPreviewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewController.swift; path = JSPhotoPicker/Classes/JSPreviewController.swift; sourceTree = "<group>"; };
+		72778FB80721051BFDA113D72E15BAB8 /* JSPreviewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewCell.swift; path = JSPhotoPicker/Classes/JSPreviewCell.swift; sourceTree = "<group>"; };
+		72ED1FA012FBA37A9B96D47C669FA89E /* JSImageManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSImageManager.swift; path = JSPhotoPicker/Classes/JSImageManager.swift; sourceTree = "<group>"; };
 		764D33E23CE6C1111110B04F5CBADADB /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		7A83BE7299C2FCCC51C5ED9480E621AD /* JSPhotoPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoPickerController.swift; path = JSPhotoPicker/Classes/JSPhotoPickerController.swift; sourceTree = "<group>"; };
-		7E125BA70E937C9EC35A391CA185730B /* JSPhotoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoViewController.swift; path = JSPhotoPicker/Classes/JSPhotoViewController.swift; sourceTree = "<group>"; };
-		807D57B83066E0729D8E6ACCE4FE2685 /* JSAlbumView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumView.swift; path = JSPhotoPicker/Classes/JSAlbumView.swift; sourceTree = "<group>"; };
-		86DD604819776F31C8CBF3E57A012B53 /* JSPhotoCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoCell.swift; path = JSPhotoPicker/Classes/JSPhotoCell.swift; sourceTree = "<group>"; };
-		8DAF7B3D234B9BA6C71C09EFFA64630D /* ResourceBundle-JSPhotoPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JSPhotoPicker-Info.plist"; sourceTree = "<group>"; };
-		90FE3BA0CA578D96A620CC2C557E601C /* JSPhotoPicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = JSPhotoPicker.bundle; path = JSPhotoPicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		77278CAC2077900382A210044B394DB8 /* image_choose_bg@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image_choose_bg@3x.png"; path = "JSPhotoPicker/Assets/image_choose_bg@3x.png"; sourceTree = "<group>"; };
+		77D1D46565A0EE1A99B8B415F88A0F9A /* arrow_down@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_down@3x.png"; path = "JSPhotoPicker/Assets/arrow_down@3x.png"; sourceTree = "<group>"; };
+		80D88A0D3F02FDD811FAADA9CE940570 /* ResourceBundle-JSPhotoPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JSPhotoPicker-Info.plist"; sourceTree = "<group>"; };
+		8A719BE774DFE07AD59A5A6B0E20C5A9 /* JSPhotoPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JSPhotoPicker-dummy.m"; sourceTree = "<group>"; };
+		8E48336B1DDA3E4759EC74029CB005FB /* JSPhotoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoViewController.swift; path = JSPhotoPicker/Classes/JSPhotoViewController.swift; sourceTree = "<group>"; };
+		90FE3BA0CA578D96A620CC2C557E601C /* JSPhotoPicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSPhotoPicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95AF6E9E67D620E639E17F9B0A8B56EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		98534EA1FA6ABE85A2415466F0250466 /* JSPhotoViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoViewFlowLayout.swift; path = JSPhotoPicker/Classes/JSPhotoViewFlowLayout.swift; sourceTree = "<group>"; };
 		A02A1087A37D5FE3535EBFB6C0D5334B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A661FECCEBFF9D01869EE3B29C4C1EFF /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A9752BE67C5EE1AF49153DA88C63C958 /* MainAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainAnimator.swift; path = JSPhotoPicker/Classes/MainAnimator.swift; sourceTree = "<group>"; };
-		B0D4DE42302F1FB2DD4FA34B167E2D81 /* JSPreviewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewCell.swift; path = JSPhotoPicker/Classes/JSPreviewCell.swift; sourceTree = "<group>"; };
+		B4A5F292E39A3612A0CAAFD2B49BB649 /* JSTitleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSTitleButton.swift; path = JSPhotoPicker/Classes/JSTitleButton.swift; sourceTree = "<group>"; };
+		BCA143742DFCAB5DA6DD15B007F3C354 /* JSPhotoPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSPhotoPicker-umbrella.h"; sourceTree = "<group>"; };
+		C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JSPhotoPicker.xcconfig; sourceTree = "<group>"; };
 		C9BDE82371C83FA9AE91B05F77ACAA36 /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
+		CA62668AF23A217B24C01E54D83F3812 /* image_choose_confirm@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image_choose_confirm@3x.png"; path = "JSPhotoPicker/Assets/image_choose_confirm@3x.png"; sourceTree = "<group>"; };
+		CF6DD100B767850141365D1B247D23E6 /* JSPhotoCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoCell.swift; path = JSPhotoPicker/Classes/JSPhotoCell.swift; sourceTree = "<group>"; };
+		D005DC67A513A708C83C2ABFCBFBA72D /* JSPhotoPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JSPhotoPicker.modulemap; sourceTree = "<group>"; };
 		D26A7C6C07A9AA6DA68F130C37E06956 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
-		D2DB0D92028EE670AC953C47ACDB2A79 /* JSPhotoViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPhotoViewFlowLayout.swift; path = JSPhotoPicker/Classes/JSPhotoViewFlowLayout.swift; sourceTree = "<group>"; };
-		D7DDD9275C96E7C398A54322216075C1 /* arrow-up@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow-up@2x.png"; path = "JSPhotoPicker/Assets/arrow-up@2x.png"; sourceTree = "<group>"; };
-		D8C05D6F1D3C40EC7F9CE0E7C137B06B /* arrow-down@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow-down@2x.png"; path = "JSPhotoPicker/Assets/arrow-down@2x.png"; sourceTree = "<group>"; };
+		E0DFFAEFEBD27C7A55492B9E31419FFB /* JSPreviewPopAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSPreviewPopAnimator.swift; path = JSPhotoPicker/Classes/JSPreviewPopAnimator.swift; sourceTree = "<group>"; };
 		E512A5F985F876750237FD237C3AEEDA /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		EC52EA5130D0C08B47C89D7B1E3C2DEA /* JSAlbumModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSAlbumModel.swift; path = JSPhotoPicker/Classes/JSAlbumModel.swift; sourceTree = "<group>"; };
 		EFFB74AAA6B2AE8DABF0E88E61E09178 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB452E1FF46756EC35B67B0DC10193D4 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example.framework; path = "Pods-Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB452E1FF46756EC35B67B0DC10193D4 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,17 +157,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		75FDBBE4F4E3CB31817C0B7F65C88601 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D8C05D6F1D3C40EC7F9CE0E7C137B06B /* arrow-down@2x.png */,
-				D7DDD9275C96E7C398A54322216075C1 /* arrow-up@2x.png */,
-				693B3C53CB40B55D33198098D26CC02C /* image-choose@3x.png */,
-				63006DD36CC152E39B7553AA6A94EBA7 /* image-unchoose@3x.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -180,9 +171,24 @@
 		8CD863BED3A02DE9378E3C447DD10C18 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EC2CF73E5DACF0533915F642717C1DA5 /* JSPhotoPicker */,
+				C16CDDED8DAF40F8B389212B85296368 /* JSPhotoPicker */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8D807251494E4F24E8475A83E5BD57A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0B743569B246F6AC5EEC6E0C35B74 /* Info.plist */,
+				D005DC67A513A708C83C2ABFCBFBA72D /* JSPhotoPicker.modulemap */,
+				C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */,
+				8A719BE774DFE07AD59A5A6B0E20C5A9 /* JSPhotoPicker-dummy.m */,
+				16592057ECAB884F84415A0D39DEC77D /* JSPhotoPicker-prefix.pch */,
+				BCA143742DFCAB5DA6DD15B007F3C354 /* JSPhotoPicker-umbrella.h */,
+				80D88A0D3F02FDD811FAADA9CE940570 /* ResourceBundle-JSPhotoPicker-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/JSPhotoPicker";
 			sourceTree = "<group>";
 		};
 		9EFA3F5A4484B397B4ED6B7F86D1C6F4 /* iOS */ = {
@@ -195,19 +201,46 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		BB386419219314950B373642C26F505D /* Support Files */ = {
+		C16CDDED8DAF40F8B389212B85296368 /* JSPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
-				31A696A866B54EE95AC7BA506265ACAF /* Info.plist */,
-				5ACA30DEFE5C5CE92B6142CB86DEBEC2 /* JSPhotoPicker.modulemap */,
-				3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */,
-				0228339ED739ADE3AFF13A47275FA303 /* JSPhotoPicker-dummy.m */,
-				567902C80F4939D00AE834C3653A1039 /* JSPhotoPicker-prefix.pch */,
-				3154AFCBB601CD96A3ED3B6ACD929B76 /* JSPhotoPicker-umbrella.h */,
-				8DAF7B3D234B9BA6C71C09EFFA64630D /* ResourceBundle-JSPhotoPicker-Info.plist */,
+				1DAF77F79E355D9B6C19CBBBDCE3E4B9 /* Common.swift */,
+				115837B5FFD565E9CAFBCF05C56E057C /* JSAlbumCell.swift */,
+				EC52EA5130D0C08B47C89D7B1E3C2DEA /* JSAlbumModel.swift */,
+				1EEF1B215E818C6ECC408F1CB0D28FD9 /* JSAlbumView.swift */,
+				72ED1FA012FBA37A9B96D47C669FA89E /* JSImageManager.swift */,
+				CF6DD100B767850141365D1B247D23E6 /* JSPhotoCell.swift */,
+				18DDD2F5AF434B20D7EDF089C1C5CC0C /* JSPhotoPickerConfig.swift */,
+				44F945D3AD13F6A95F492D5EBA3EDFC3 /* JSPhotoPickerController.swift */,
+				8E48336B1DDA3E4759EC74029CB005FB /* JSPhotoViewController.swift */,
+				98534EA1FA6ABE85A2415466F0250466 /* JSPhotoViewFlowLayout.swift */,
+				72778FB80721051BFDA113D72E15BAB8 /* JSPreviewCell.swift */,
+				5E16C9DF67268AA9D528B8AFE7C1AA5F /* JSPreviewController.swift */,
+				05BA1642C5A6D0A44AE0779FA5F292E3 /* JSPreviewCropView.swift */,
+				E0DFFAEFEBD27C7A55492B9E31419FFB /* JSPreviewPopAnimator.swift */,
+				5790A427090B5043E2BDB4BD97B731A6 /* JSPreviewPushAnimator.swift */,
+				3230BA678561A14AB0518BF3D9E3042D /* JSPreviewView.swift */,
+				B4A5F292E39A3612A0CAAFD2B49BB649 /* JSTitleButton.swift */,
+				1AAF897D4C00AFA700463C041AB9E853 /* MainAnimator.swift */,
+				0489015FAF9D4D57E07E9FEC31E7D27E /* JSPhotoExtensions.swift */,
+				CDDF52B0B1B569BD25C2595271B4876C /* Resources */,
+				8D807251494E4F24E8475A83E5BD57A9 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/JSPhotoPicker";
+			name = JSPhotoPicker;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		CDDF52B0B1B569BD25C2595271B4876C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				77D1D46565A0EE1A99B8B415F88A0F9A /* arrow_down@3x.png */,
+				4FFB9DE96D97B55BD5B34BAE1DF64B66 /* arrow_up@3x.png */,
+				21F71D9A1895F145FEE469E54B0256B5 /* image_choose@3x.png */,
+				77278CAC2077900382A210044B394DB8 /* image_choose_bg@3x.png */,
+				CA62668AF23A217B24C01E54D83F3812 /* image_choose_confirm@3x.png */,
+				4829E694F4E020C4812F86F900EC9C02 /* image_unchoose@3x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		D2CBDA447F0FE6C12DECE6A5EC38A194 /* Products */ = {
@@ -218,36 +251,6 @@
 				FB452E1FF46756EC35B67B0DC10193D4 /* Pods_Example.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EC2CF73E5DACF0533915F642717C1DA5 /* JSPhotoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				403183CC520F921E36C69AFF38FA1B7B /* Common.swift */,
-				1C19C7A352375EDDEA597EE5645B5FE9 /* JSAlbumCell.swift */,
-				34F9A6BD161C43CFCED66A5D53D035B3 /* JSAlbumModel.swift */,
-				807D57B83066E0729D8E6ACCE4FE2685 /* JSAlbumView.swift */,
-				12DB26DCBD4D8E03CA684AACA3CF4DFA /* JSImageManager.swift */,
-				86DD604819776F31C8CBF3E57A012B53 /* JSPhotoCell.swift */,
-				4DB5C53965946A9477AD3F5689F6F1A1 /* JSPhotoPickerConfig.swift */,
-				7A83BE7299C2FCCC51C5ED9480E621AD /* JSPhotoPickerController.swift */,
-				7E125BA70E937C9EC35A391CA185730B /* JSPhotoViewController.swift */,
-				D2DB0D92028EE670AC953C47ACDB2A79 /* JSPhotoViewFlowLayout.swift */,
-				B0D4DE42302F1FB2DD4FA34B167E2D81 /* JSPreviewCell.swift */,
-				73CBC8561CBDC61C5EE2E7305E52294F /* JSPreviewController.swift */,
-				45B6DC4DE26E43A9CE9396D8DA739DF6 /* JSPreviewCropView.swift */,
-				3E1DEE13FCA61931E1E11CFA419EE674 /* JSPreviewPopAnimator.swift */,
-				42BDAC5EEC8761C0C1896420BEC3699D /* JSPreviewPushAnimator.swift */,
-				5F6EC8F6491A5250EC72F9E9CD7E5D05 /* JSPreviewView.swift */,
-				56B9CD8A4E8CE79112FDCDDA8C7581B3 /* JSTitleButton.swift */,
-				A9752BE67C5EE1AF49153DA88C63C958 /* MainAnimator.swift */,
-				102A60B054CC40E52B415D282420BD8F /* PHAssetExtension.swift */,
-				0957ACB9D171EE74A43BCEF1C64147B5 /* UIApplicationExtension.swift */,
-				75FDBBE4F4E3CB31817C0B7F65C88601 /* Resources */,
-				BB386419219314950B373642C26F505D /* Support Files */,
-			);
-			name = JSPhotoPicker;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		FE9811ABEB5931E154211FCA14B78350 /* Pods-Example */ = {
@@ -296,7 +299,7 @@
 			buildPhases = (
 				15DDF84941E5C70E1F8C6B749FD31F1A /* Sources */,
 				194166731B87DE882130805209116553 /* Frameworks */,
-				48E275A88603DE07B7B6A91BC9D00423 /* Resources */,
+				E25CE24885992042B59A346FA23BBEB8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -373,22 +376,24 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		48E275A88603DE07B7B6A91BC9D00423 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B7CCCB73D58692D93D3E0CAB8FB0412 /* arrow-down@2x.png in Resources */,
-				D03D75322B9722E020AB27F0DC2C390E /* arrow-up@2x.png in Resources */,
-				57C2ED244735B9FC357B313312F8EA86 /* image-choose@3x.png in Resources */,
-				946FBCF2FAC05D12240E53170D9786EC /* image-unchoose@3x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9C9AFAF19D8DAC914071C11431281C7B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DAC238BC3BBFD5C02B60DE5C6C6D5325 /* JSPhotoPicker.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E25CE24885992042B59A346FA23BBEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A6A17DCA259EFD9F4B9EF03001ED1EB /* arrow_down@3x.png in Resources */,
+				EE880C2C8527FBB295605AB62BBEC30F /* arrow_up@3x.png in Resources */,
+				FAF80516EC10E5A35835CE4DBB4F954E /* image_choose@3x.png in Resources */,
+				448A261F4D82D1FB86C2BA184C25A5EC /* image_choose_bg@3x.png in Resources */,
+				14BE8FD18F1F991B29DADC58EFC85E82 /* image_choose_confirm@3x.png in Resources */,
+				C3B3F83266FE60211B1E61C37B779F26 /* image_unchoose@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,8 +430,7 @@
 				D9C253EF07693F2B594B91D9EFED0BA6 /* JSPreviewView.swift in Sources */,
 				DF714096165405EBCB1A4108372D7E98 /* JSTitleButton.swift in Sources */,
 				170A6EF027261CBC76C33A98F4097F8A /* MainAnimator.swift in Sources */,
-				39B40BD23C84BC3B3B75E0FDE69C593D /* PHAssetExtension.swift in Sources */,
-				FDAFB1605E2354A2505727EFE57E7FB1 /* UIApplicationExtension.swift in Sources */,
+				39B40BD23C84BC3B3B75E0FDE69C593D /* JSPhotoExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +511,7 @@
 		};
 		293464C4D7723453B1E875DA0407BC2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */;
+			baseConfigurationReference = C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -586,7 +590,7 @@
 		};
 		3B91A9229BAECAC6DAB5B2D28AB714D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */;
+			baseConfigurationReference = C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JSPhotoPicker";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -642,7 +646,7 @@
 		};
 		8285518E9A9C8CFC76EE7D09CE34E467 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */;
+			baseConfigurationReference = C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JSPhotoPicker";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -697,7 +701,7 @@
 		};
 		AB64E0868922FA500F8FDC1EB811FDC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3470437C3523C409D27246BB6E3B50BB /* JSPhotoPicker.xcconfig */;
+			baseConfigurationReference = C819D4027CC960210BB04FC2CD54578D /* JSPhotoPicker.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

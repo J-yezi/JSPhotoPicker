@@ -13,16 +13,9 @@ import Photos
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    var a: UIView!
-    var b: Bool = false
-    var delayItem: DispatchWorkItem!
-//    var control: JSPhotoPickerController!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        a = UIView(frame: CGRect(x: 0, y: 400, width: 100, height: 100))
-        a.backgroundColor = UIColor.green
-        view.addSubview(a)
     }
 
     @IBAction func click(_ sender: Any) {

@@ -11,7 +11,7 @@ import Photos
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
-let kLog: Bool = true
+let kLog: Bool = false
 
 public class JSPhotoPickerController: UINavigationController {
     fileprivate var complete: ((JSPhotoPickerController, [PHAsset]) ->Void)?
@@ -79,7 +79,11 @@ extension JSPhotoPickerController {
     public func display() {
         strong = self
         JSPhotoPickerController.authorize { [weak self] in
-            guard $0 == true, let `self` = self else { return }
+            guard let `self` = self else { return }
+            guard $0 == true else {
+                self.strong = nil
+                return
+            }
             DispatchQueue.main.async {
                 UIApplication.shared.presentedController?.present(self, animated: true, completion: nil)
             }
