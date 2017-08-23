@@ -10,10 +10,15 @@ import UIKit
 import Photos
 
 class JSAlbumView: UIView {
+    
+    // MARK: - Data
+    
     fileprivate let identifier = "JSAlbumViewCell"
     fileprivate let albums: [JSAlbumModel]
     fileprivate var selectBlock: ((Int) -> Void)
     fileprivate var closeBlock: (() -> Void)?
+    
+    // MARK: - UI
     fileprivate lazy var tableView: UITableView = {
         let tableView: UITableView = UITableView(frame: self.bounds, style: .plain)
         tableView.delegate = self
@@ -25,6 +30,8 @@ class JSAlbumView: UIView {
         tableView.register(JSAlbumCell.self, forCellReuseIdentifier: self.identifier)
         return tableView
     }()
+    
+    // MARK: - Lifecycle
     
     init(frame: CGRect, albums: [JSAlbumModel], choose: @escaping ((Int) -> Void), close: @escaping (() -> Void)) {
         self.albums = albums
@@ -53,20 +60,6 @@ extension JSAlbumView {
 }
 
 extension JSAlbumView: UITableViewDelegate, UITableViewDataSource {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.y < -70 {
-//            closeBlock?()
-//        }
-//        print(scrollView.contentOffset.y)
-//        if scrollView.contentOffset.y <= 0 && scrollView.isDragging {
-//            print("------------------\(scrollView.isDragging)")
-//            transform = CGAffineTransform(translationX: 0, y: -scrollView.contentOffset.y)
-//            tableView.transform = CGAffineTransform(translationX: 0, y: scrollView.contentOffset.y)
-//        }else {
-//            transform = CGAffineTransform.identity
-//            tableView.transform = CGAffineTransform.identity
-//        }
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albums.count
@@ -79,8 +72,8 @@ extension JSAlbumView: UITableViewDelegate, UITableViewDataSource {
         cell.countLabel.text = "\(album.count)"
         
         album.photos.enumerateObjects({ (asset, index, stop) in
-            JSImageManager.getPhoto(asset: asset, width: 74, complete: { (image, result) in
-                cell.albumImageView.image = image
+            asset.requestImage(targetSize: .custom(size: CGSize(width: 74 * UIScreen.main.scale, height: 74 * UIScreen.main.scale)), complete: { [weak cell] (image, _) in
+                cell?.albumImageView.image = image
             })
             stop.initialize(to: true)
         })
@@ -91,4 +84,5 @@ extension JSAlbumView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectBlock(indexPath.row)
     }
+    
 }

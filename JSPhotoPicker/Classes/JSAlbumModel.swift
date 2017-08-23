@@ -10,9 +10,10 @@ import Foundation
 import Photos
 
 struct JSAlbumModel {
+    
     let album: PHAssetCollection
     let title: String?
-    let count: Int
+    var count: Int
     var photos: PHFetchResult<PHAsset>
 
     init(album: PHAssetCollection) {
@@ -24,4 +25,10 @@ struct JSAlbumModel {
         photos = PHAsset.fetchAssets(in: album, options: options)
         count = photos.count
     }
+    
+    mutating func setPhotos(photos: PHFetchResult<PHAsset>) {
+        self.photos = photos
+        self.count = photos.count
+    }
+    
 }

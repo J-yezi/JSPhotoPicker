@@ -10,10 +10,10 @@ import UIKit
 
 class MainAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    var fromControl: UIViewController!
-    var toControl: UIViewController!
+    weak var fromControl: UIViewController!
+    weak var toControl: UIViewController!
     var containerView: UIView!
-    var transitionContext: UIViewControllerContextTransitioning!
+    weak var transitionContext: UIViewControllerContextTransitioning!
     var defaultTime = 0.3
     
     deinit {

@@ -29,7 +29,7 @@ class JSAlbumCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(colorLiteralRed: 240.0 / 255.0, green: 240.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)
+        selectedView.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
         selectedBackgroundView = selectedView
         
         addSubview(albumImageView)

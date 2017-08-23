@@ -11,20 +11,30 @@ import Photos
 
 protocol JSPhotoCellDelegate: class {
     func chooseImage(cell: JSPhotoCell)
+    func iCloudDownLoad(row: Int)
+}
+
+struct JSPhotoCellData {
+    var choosedImage: UIImage
+    var indexPath: IndexPath
+    var delegate: JSPhotoCellDelegate?
+    var iCloudColor: UIColor
 }
 
 class JSPhotoCell: UICollectionViewCell {
-    weak var delegate: JSPhotoCellDelegate?
-    var indexPath: IndexPath!
-    var choosedImage: UIImage! /// 选择后的图片
+    
+    // MARK: - Data
+    
+    var data: JSPhotoCellData!
     var choosed: Bool = false {
         didSet {
             chooseView.isSelected = choosed
-            shadeView.isHidden = !choosed
-            
-            chooseView.setImage(choosed ? choosedImage : Image(named: "image_unchoose"), for: .normal)
+            chooseView.setImage(choosed ? data.choosedImage : Image(named: "image_unchoose"), for: .normal)
         }
     }
+    
+    // MARK: - UI
+    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: self.bounds)
         imageView.contentMode = .scaleAspectFill
@@ -37,12 +47,10 @@ class JSPhotoCell: UICollectionViewCell {
         chooseView.addTarget(self, action: #selector(self.choose), for: .touchUpInside)
         return chooseView
     }()
-    fileprivate lazy var shadeView: UIView = {
-        let shadeView: UIView = UIView(frame: self.bounds)
-        shadeView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        shadeView.isHidden = true
-        return shadeView
-    }()
+    /// 主要是图片为iCloud的时候的遮罩
+    var iCloudView: JSiCloudView?
+    
+    // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,16 +66,40 @@ class JSPhotoCell: UICollectionViewCell {
             print("\(self.classForCoder.description()) - deinit")
         }
     }
+    
 }
 
 extension JSPhotoCell {
+    
     fileprivate func uiSet() {
+        backgroundColor = defaultColor
         addSubview(imageView)
-        addSubview(shadeView)
         addSubview(chooseView)
     }
     
     @objc fileprivate func choose() {
-        delegate?.chooseImage(cell: self)
+        data.delegate?.chooseImage(cell: self)
     }
+    
+    @objc fileprivate func iCloudDownload() {
+        /// 暂时不提供iCloud下载的功能
+//        data.delegate?.iCloudDownLoad(row: data.indexPath.row)
+    }
+    
+    /// 显示iCloud标识
+    func showiCloud(_ isShow: Bool) {
+        if isShow {
+            iCloudView = JSiCloudView(frame: CGRect(x: self.bounds.width - 29.8, y: self.bounds.height - 21.4, width: 22.8, height: 14.4), color: data.iCloudColor)
+            iCloudView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iCloudDownload)))
+            addSubview(iCloudView!)
+        }else {
+            iCloudView?.gestureRecognizers?.forEach {
+                iCloudView?.removeGestureRecognizer($0)
+            }
+            iCloudView?.removeFromSuperview()
+            iCloudView = nil
+        }
+        chooseView.isHidden = isShow
+    }
+    
 }

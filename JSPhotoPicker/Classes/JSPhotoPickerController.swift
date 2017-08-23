@@ -9,16 +9,17 @@
 import UIKit
 import Photos
 
-let kScreenWidth = UIScreen.main.bounds.size.width
-let kScreenHeight = UIScreen.main.bounds.size.height
-let kLog: Bool = false
-
 public class JSPhotoPickerController: UINavigationController {
+    
     fileprivate var complete: ((JSPhotoPickerController, [PHAsset]) ->Void)?
     fileprivate var cancel: ((JSPhotoPickerController) -> Void)?
     fileprivate var photoControl: JSPhotoViewController!
     /// 在用户授权相册时候，是一个异步过程，所有会出现deinit的情况，所有需要一个循环引用
     fileprivate var strong: AnyObject?
+    
+    // MARK: - UI
+    
+    fileprivate var bottomLine: UIView?
     
     public init(config: JSPhotoPickerConfig = JSPhotoPickerConfig(), complete: ((JSPhotoPickerController, [PHAsset]) ->Void)? = nil, cancel: ((JSPhotoPickerController) -> Void)?) {
         super.init(nibName: nil, bundle: nil)
@@ -57,11 +58,18 @@ public class JSPhotoPickerController: UINavigationController {
 }
 
 extension JSPhotoPickerController {
+    
     fileprivate func uiSet() {
         view.backgroundColor = UIColor.white
+        /// 隐藏导航栏下面的那条横线，修改后的navigationBar如果有模糊效果的话，不会改变
+        let separatorView = UIView(frame: CGRect(x: 0, y: navigationBar.frame.height - 0.5, width: navigationBar.frame.width, height: 0.5))
+        separatorView.backgroundColor = UIColor(hexString: "0xdfe2e6")
+        navigationBar.addSubview(separatorView)
+        bottomLine = findNavBarBottomLine(navigationBar)
+        bottomLine?.isHidden = true
     }
     
-    class public func authorize(_ complete: @escaping (Bool) -> Void) {
+    static public func authorize(_ complete: @escaping (Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch status {
@@ -89,10 +97,25 @@ extension JSPhotoPickerController {
             }
         }
     }
+    
+    /// 查找导航栏最下面那根线
+    fileprivate func findNavBarBottomLine(_ view: UIView) -> UIImageView? {
+        if view is UIImageView, view.frame.size.height <= 1 {
+            return view as? UIImageView
+        }
+        for subView in view.subviews {
+            let imageView = findNavBarBottomLine(subView)
+            if imageView != nil {
+                return imageView
+            }
+        }
+        return nil
+    }
 }
 
 /// 设置图片选择器不可进行旋转
 extension JSPhotoPickerController {
+    
     override public var shouldAutorotate: Bool {
         return false
     }
@@ -100,4 +123,5 @@ extension JSPhotoPickerController {
     override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
 }
